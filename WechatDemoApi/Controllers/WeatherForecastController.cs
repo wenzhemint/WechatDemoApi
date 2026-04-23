@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WechatDemoApi.Models;
 
 namespace WechatDemoApi.Controllers
 {

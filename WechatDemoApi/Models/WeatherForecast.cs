@@ -1,4 +1,4 @@
-namespace WechatDemoApi
+namespace WechatDemoApi.Models
 {
     public class WeatherForecast
     {
