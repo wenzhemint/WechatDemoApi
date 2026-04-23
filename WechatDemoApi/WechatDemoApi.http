@@ -1,0 +1,6 @@
+@WechatDemoApi_HostAddress = http://localhost:5065
+
+GET {{WechatDemoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
