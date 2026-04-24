@@ -1,9 +1,12 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WechatDemoApi.Data;
 using WechatDemoApi.Repositories;
 using WechatDemoApi.Services;
+using WechatDemoApi.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +45,8 @@ builder.Services.AddAuthentication("Bearer")
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
 
 var app = builder.Build();
 

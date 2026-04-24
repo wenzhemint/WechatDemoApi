@@ -32,7 +32,7 @@ public class AuthService : IAuthService
         _logger.LogInformation("Received Openid is: {Openid}", openId);
 
         if (string.IsNullOrWhiteSpace(openId))
-            throw new ArgumentException("openId should not be null");
+            throw new Exception("OpenId is null from WeChat API");
 
         var user = await _userRepo.GetByOpenIdAsync(openId);
 
