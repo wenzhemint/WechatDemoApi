@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WechatDemoApi.Data;
+using WechatDemoApi.Middlewares;
 using WechatDemoApi.Repositories;
 using WechatDemoApi.Services;
 using WechatDemoApi.Validators;
@@ -59,6 +60,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
