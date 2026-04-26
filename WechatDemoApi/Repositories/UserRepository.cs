@@ -18,6 +18,11 @@ public class UserRepository : IUserRepository
         return await _context.Users.FirstOrDefaultAsync(u => u.OpenId == openId);
     }
 
+    public async Task<User?> GetByIdAsync(int id)
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+    }
+
     public async Task AddAsync(User user)
     {
         _context.Users.Add(user);

@@ -23,6 +23,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddHttpClient<IWeChatAuthService, WeChatAuthService>();
 builder.Services.AddScoped<TokenService>();
 

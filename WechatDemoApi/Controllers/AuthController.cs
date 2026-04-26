@@ -20,8 +20,14 @@ public class AuthController : ControllerBase
     [HttpPost("wechat-login")]
     public async Task<IActionResult> WechatLogin([FromBody] LoginRequest request)
     {
-        var result = await _authService.WechatLoginAsync(request.Code);
-        _logger.LogInformation("User logged in");
-        return Ok(result);
+        var token = await _authService.WechatLoginAsync(request.Code);
+        _logger.LogInformation("User logged in successfully");
+
+        var response = new LoginResponse
+        {
+            Token = token
+        };
+
+        return Ok(response);
     }
 }

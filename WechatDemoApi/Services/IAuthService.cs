@@ -4,5 +4,5 @@ namespace WechatDemoApi.Services;
 
 public interface IAuthService
 {
-    Task<LoginResponse> WechatLoginAsync(string code);
+    Task<string> WechatLoginAsync(string code);
 }

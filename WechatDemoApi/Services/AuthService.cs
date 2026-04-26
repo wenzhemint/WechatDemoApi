@@ -10,19 +10,19 @@ namespace WechatDemoApi.Services;
 public class AuthService : IAuthService
 {
     private readonly ILogger<AuthController> _logger;
-    private readonly TokenService _tokenService;
     private readonly IUserRepository _userRepo;
+    private readonly TokenService _tokenService;
     private readonly IWeChatAuthService _weChatAuthService;
 
     public AuthService(ILogger<AuthController> logger, IUserRepository userRepo, TokenService tokenService, IWeChatAuthService weChatAuthService)
     {
         _userRepo = userRepo;
+        _weChatAuthService = weChatAuthService;
         _tokenService = tokenService;
         _logger = logger;
-        _weChatAuthService = weChatAuthService;
     }
 
-    public async Task<LoginResponse> WechatLoginAsync(string code)
+    public async Task<string> WechatLoginAsync(string code)
     {
         _logger.LogInformation("Wechat login attempt: {Code}", code);
 
@@ -51,12 +51,6 @@ public class AuthService : IAuthService
 
         _logger.LogInformation("User {UserId} logged in successfully", user.Id);
 
-        var token = _tokenService.GenerateToken(user);
-
-        return new LoginResponse
-        {
-            Token = token,
-            Username = user.Username
-        };
+        return _tokenService.GenerateToken(user);
     }
 }
