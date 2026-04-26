@@ -9,7 +9,7 @@ public class MockWeChatController : ControllerBase
     [HttpGet("auth")]
     public async Task<IActionResult> Auth(string code)
     {
-        await Task.Delay(2000); // simulate network latency
+        await Task.Delay(200); // simulate network latency
 
         if (code == "fail")
             return BadRequest("invalid code");

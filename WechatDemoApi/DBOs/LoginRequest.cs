@@ -6,6 +6,6 @@ public class LoginRequest
 {
     [Required]
     [MinLength(3)]
-    [MaxLength(20)]
+    [MaxLength(50)]
     public string Code { get; set; }
 }
